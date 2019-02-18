@@ -107,6 +107,19 @@ document.addEventListener("dragover", function(event) {
   event.preventDefault();
 });
 
+document.addEventListener("dragenter", function(event) {
+  // highlight potential drop target when the draggable element enters it
+  if (event.target.className == "dropzone") {
+    event.target.style.background = "purple";
+  }
+});
+document.addEventListener("dragleave", function(event) {
+  // reset background of potential drop target when the draggable element leaves it
+  if (event.target.className == "dropzone") {
+    event.target.style.background = "";
+  }
+});
+
 document.addEventListener("drop", function(event) {
   // prevent default action (open as link for some elements)
   event.preventDefault();
