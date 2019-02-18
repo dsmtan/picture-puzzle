@@ -24,6 +24,8 @@ function theImageHasLoaded() {
 
 //display puzzle grid
 
+let pieceCounter = 0;
+
 function createGrid() {
   // user input x and y number of pieces
   const numOfXPieces = document.querySelector("#xPieces").value;
@@ -47,10 +49,11 @@ function createGrid() {
       let gridPiece = document.createElement("div");
 
       gridPiece.style.height = container_height / numOfYPieces + "px";
-      gridPiece.id = `grid${x}${y}`;
+      gridPiece.dataset.id = `${x}${y}`;
 
       gridPiece.classList.add("dropzone");
       container.appendChild(gridPiece);
+      pieceCounter++;
     }
   }
 
@@ -65,7 +68,7 @@ function createGrid() {
 
       puzzlePiece.style.height = pieceHeight;
       puzzlePiece.style.width = pieceWidth;
-      puzzlePiece.id = `puzzle${x}${y}`;
+      puzzlePiece.dataset.id = `${x}${y}`;
       puzzlePiece.classList.add("draggable");
 
       let imageURL = document.querySelector("#imageurl").value;
@@ -120,6 +123,8 @@ document.addEventListener("dragleave", function(event) {
   }
 });
 
+let counter = 0;
+
 document.addEventListener("drop", function(event) {
   // prevent default action (open as link for some elements)
   event.preventDefault();
@@ -133,6 +138,17 @@ document.addEventListener("drop", function(event) {
 
     dragged.style.left = event.target.style.left;
     dragged.style.top = event.target.style.top;
+
+    if (event.target.dataset.id == dragged.dataset.id) {
+      // alert("Good one!");
+      counter++;
+    }
+
+    setTimeout(function() {
+      if (counter == pieceCounter) {
+        alert("WOW YOU'RE A GENIUS'! Amazing job :D");
+      }
+    }, 200);
   } else if (event.target.className == "theBody") {
     // park the dragged elem somewhere on the body
     dragged.style.left = event.pageX + "px";
