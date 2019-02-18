@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Denise Puzzle</title>
+
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      #inputDiv {
+        display: block;
+      }
+
+      label {
+        margin: 1em;
+      }
+
+      #puzzleImage {
+        max-height: 300px;
+        margin: 2em;
+        display: block;
+      }
+
+      #container {
+        display: grid;
+        background-color: lightgrey;
+        margin: 2em;
+      }
+
+      #looseDiv {
+        display: grid;
+        margin: 2em;
+      }
+
+      .draggable {
+        position: absolute;
+        cursor: pointer;
+      }
+
+      .dropzone {
+        outline: 0.5px solid grey;
+        background: lightpink;
+      }
+    </style>
+  </head>
+  <body class="theBody">
+    <div id="inputDiv">
+      <label for="imageurl">Enter your image URL:</label>
+
+      <input
+        type="url"
+        name="url"
+        id="imageurl"
+        placeholder="https://example.com"
+        pattern="https://.*"
+        size="30"
+        required
+      />
+
+      <label for="puzzlepieces">Puzzle size W x H:</label>
+
+      <input type="number" id="xPieces" name="puzzlepieces" min="2" max="10" />
+      X
+      <input type="number" id="yPieces" name="puzzlepieces" min="2" max="10" />
+
+      <button id="puzzleBtn">Make the puzzle</button>
+    </div>
+
+    <img id="puzzleImage" src="" />
+
+    <div id="container"></div>
+
+    <div id="looseDiv"></div>
+
+    <script src="denise.js"></script>
+  </body>
+</html>
