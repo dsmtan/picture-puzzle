@@ -70,6 +70,7 @@ function createGrid() {
       puzzlePiece.style.width = pieceWidth;
       puzzlePiece.dataset.id = `${x}${y}`;
       puzzlePiece.classList.add("draggable");
+      puzzlePiece.draggable = "true";
 
       let imageURL = document.querySelector("#imageurl").value;
       puzzlePiece.style.backgroundImage = `url("${imageURL}")`;
